@@ -49,6 +49,19 @@
         </dependency>
 
         <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-bom</artifactId>
+            <version>5.8.20</version>
+            <!-- 加不加这句都能跑，区别只有是否告警  -->
+            <type>pom</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>cn.hutool</groupId>
+                    <artifactId>hutool-system</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
