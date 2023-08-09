@@ -29,11 +29,11 @@ public class JAnalysisApplication {
         File src = new File("./src_file");
         File dest = new File("./src_file2");
 
-        try {
-            copydir(src,dest);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            copydir(src,dest);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
 

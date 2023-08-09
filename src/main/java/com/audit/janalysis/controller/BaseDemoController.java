@@ -1,5 +1,6 @@
 package com.audit.janalysis.controller;
 
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.boot.system.JavaVersion;
@@ -63,11 +64,18 @@ public class BaseDemoController {
         fos.close();
     }
 
-    @GetMapping(value = "/fileop")
-    public  void fileop() throws IOException {
-        FileWriter fw=new FileWriter("./a.txt",true);
-        fw.write("敲你吗？");
-        fw.close();
+    @GetMapping(value = "/buffercopy")
+    public  void buffercopy() throws IOException {
+        BufferedInputStream bis = new BufferedInputStream(new FileInputStream("./1.jpg"));
+        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("./2.jpg"));
+        byte[] b = new byte[1024];
+        int len = 0;
+        while ((len = bis.read(b)) != -1) {
+            bos.write(b, 0, len);
+        }
+
+        bis.close();
+        bos.close();
     }
 
 
