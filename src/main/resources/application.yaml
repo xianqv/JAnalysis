@@ -1,2 +1,9 @@
 logging:
   config: classpath:log4j2-spring.xml
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/JAnalysis?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver

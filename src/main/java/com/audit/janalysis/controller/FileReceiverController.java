@@ -23,7 +23,7 @@ public class FileReceiverController {
         LOGGER.info("上传文件信息：类型:{},文件名:{},大小:{}kb", multipartFile.getContentType(), multipartFile.getOriginalFilename(), multipartFile.getSize() / 1024);
         //解压zip文件
         if (multipartFile.getContentType().startsWith("application/zip")) {
-            LOGGER.info("存储并解压缩文件");
+            LOGGER.info("存储并解压文件");
             // unzip the file
             multipartFile.transferTo(new File("/Users/haigangdeng/Documents/IdeaProject/unzip/" + multipartFile.getOriginalFilename()));
 
