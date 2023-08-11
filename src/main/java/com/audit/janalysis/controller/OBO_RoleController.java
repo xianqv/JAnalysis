@@ -46,7 +46,7 @@ public class OBO_RoleController {
         public ResponseEntity<OBO_Role> updateRole(@PathVariable("role_id") int role_id, @RequestBody OBO_Role oboRole) {
             OBO_Role existingRole = roleService.getRoleById(role_id);
             if (existingRole != null) {
-                oboRole.setId(String.valueOf(role_id));
+                oboRole.setId(role_id);
                 int result = roleService.update(oboRole);
                 if (result > 0) {
                     return ResponseEntity.ok(oboRole);

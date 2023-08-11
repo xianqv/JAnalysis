@@ -4,10 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 @Data
-@TableName("OBO_Role")
-public class OBO_Role {
-
+@TableName("obo_permission")
+public class OBO_Permission {
     private int id;
     private String name;
-    private String permissions;
 }
