@@ -14,13 +14,13 @@ public class OBO_PermissionController {
         @Autowired
         private OBO_PermissionService permissionService;
 
-        @GetMapping("/")
+        @GetMapping("/getPermissions")
         public ResponseEntity<List<OBO_Permission>> getPermissions() {
             List<OBO_Permission> permissions = permissionService.getPermissions();
             return ResponseEntity.ok(permissions);
         }
 
-        @GetMapping("/{id}")
+        @GetMapping("/getPermissionById/{id}")
         public ResponseEntity<OBO_Permission> getPermissionById(@PathVariable("id") Integer id) {
             OBO_Permission permission = permissionService.getPermission(id);
             if (permission != null) {
@@ -30,7 +30,7 @@ public class OBO_PermissionController {
             }
         }
 
-        @PostMapping("/")
+        @PostMapping("/addPermission")
         public ResponseEntity<OBO_Permission> addPermission(@RequestBody OBO_Permission oboPermission) {
             int result = permissionService.addPermission(oboPermission);
             if (result > 0) {
@@ -40,7 +40,7 @@ public class OBO_PermissionController {
             }
         }
 
-        @PutMapping("/{id}")
+        @PutMapping("/updatePermission/{id}")
         public ResponseEntity<OBO_Permission> updatePermission(@PathVariable("id") Integer id, @RequestBody OBO_Permission oboPermission) {
             OBO_Permission existingPermission = permissionService.getPermission(id);
             if (existingPermission != null) {
@@ -56,7 +56,7 @@ public class OBO_PermissionController {
             }
         }
 
-        @DeleteMapping("/{id}")
+        @DeleteMapping("/deletePermission/{id}")
         public ResponseEntity<Void> deletePermission(@PathVariable("id") Integer id) {
             int result = permissionService.deletePermission(id);
             if (result > 0) {
