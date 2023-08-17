@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @TableName("obo_permission")
 public class OBO_Permission {
-    private int id;
+    private Integer id;
     private String name;
 }

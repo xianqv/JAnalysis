@@ -7,7 +7,7 @@ import lombok.Data;
 @TableName("OBO_Role")
 public class OBO_Role {
 
-    private int id;
+    private Integer id;
     private String name;
     private String permissions;
 }

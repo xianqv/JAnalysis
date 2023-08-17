@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @TableName("OBO_user")
 public class OBO_User {
-    private int id;
+    private Integer id;
     private String username;
     private String password;
     private String email;
