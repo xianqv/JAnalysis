@@ -287,7 +287,6 @@ INSERT INTO DBO_OrderInfo (order_id, user_id, order_date, total_amount, shipping
                                                                                                                                                                                                                                                               (8, 6, '2023-08-03', 90.00, '789 Walnut St', 'City H', 'Country H', '89012', 'PayPal', 'VWX234', true, true, '2023-08-04', '2023-08-07', 'Please expedite'),
                                                                                                                                                                                                                                                               (9, 7, '2023-08-09', 70.00, '123 Spruce St', 'City I', 'Country I', '21098', 'Credit Card', 'YZA567', true, true, '2023-08-10', '2023-08-14', ''),
                                                                                                                                                                                                                                                               (10, 8, '2023-08-11', 180.00, '456 Oak St', 'City J', 'Country J', '76543', 'PayPal', 'BCD890', true, true, '2023-08-12', '2023-08-16', 'None');
-select * from DBO_OrderInfo;
 
 
 INSERT INTO DBO_Order_Product_Record (record_id, order_id, product_id, user_id, quantity, unit_price, total_price, discount, tax, shipping_fee, returned, return_reason, return_date) VALUES
