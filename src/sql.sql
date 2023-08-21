@@ -124,7 +124,7 @@ INSERT INTO obo_User (username, password, email) VALUES
                                                      ('紫霄宫', 'zixiaogong', 'zixiaogong@example.com');
 
 CREATE TABLE DBO_UserInfo (
-                              user_id INT PRIMARY KEY,
+                              user_id INT PRIMARY KEY AUTO_INCREMENT,
                               first_name VARCHAR(50),
                               last_name VARCHAR(50),
                               email VARCHAR(100),
@@ -142,7 +142,7 @@ CREATE TABLE DBO_UserInfo (
 );
 
 CREATE TABLE DBO_OrderInfo (
-                               order_id INT PRIMARY KEY,
+                               order_id INT PRIMARY KEY AUTO_INCREMENT,
                                user_id INT,
                                order_date DATE,
                                total_amount DECIMAL(15, 2),
@@ -162,7 +162,7 @@ CREATE TABLE DBO_OrderInfo (
 
 
 CREATE TABLE DBO_ProductInfo (
-                                 product_id INT PRIMARY KEY,
+                                 product_id INT PRIMARY KEY AUTO_INCREMENT,
                                  product_name VARCHAR(100),
                                  category VARCHAR(50),
                                  brand VARCHAR(50),
@@ -180,7 +180,7 @@ CREATE TABLE DBO_ProductInfo (
 );
 
 CREATE TABLE DBO_Order_Product_Record (
-                                          record_id INT PRIMARY KEY,
+                                          record_id INT PRIMARY KEY AUTO_INCREMENT,
                                           order_id INT,
                                           product_id INT,
                                           user_id INT,

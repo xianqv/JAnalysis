@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.audit.janalysis.mapper.OboCommentMapper">
+  <resultMap id="BaseResultMap" type="com.audit.janalysis.OboComment">
+    <!--@mbg.generated-->
+    <!--@Table obo_Comment-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="article_id" jdbcType="INTEGER" property="articleId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, article_id, user_id, content, created_at
+  </sql>
+</mapper>

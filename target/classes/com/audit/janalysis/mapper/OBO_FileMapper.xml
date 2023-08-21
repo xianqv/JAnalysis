@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.audit.janalysis.mapper.OBO_FileMapper">
+  <resultMap id="BaseResultMap" type="com.audit.janalysis.entity.OBO_File">
+    <!--@mbg.generated-->
+    <!--@Table obo_File-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="filename" jdbcType="VARCHAR" property="filename" />
+    <result column="filepath" jdbcType="VARCHAR" property="filepath" />
+    <result column="size" jdbcType="INTEGER" property="size" />
+    <result column="uploaded_at" jdbcType="TIMESTAMP" property="uploadedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, filename, filepath, `size`, uploaded_at
+  </sql>
+</mapper>
