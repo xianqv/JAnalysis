@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.audit.janalysis.mapper.DboOrderProductRecordMapper">
+  <resultMap id="BaseResultMap" type="com.audit.janalysis.entity.DboOrderProductRecord">
+    <!--@mbg.generated-->
+    <!--@Table JAnalysis.DBO_Order_Product_Record-->
+    <id column="record_id" jdbcType="INTEGER" property="record_id" />
+    <result column="order_id" jdbcType="INTEGER" property="order_id" />
+    <result column="product_id" jdbcType="INTEGER" property="product_id" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
+    <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    <result column="unit_price" jdbcType="DECIMAL" property="unit_price" />
+    <result column="total_price" jdbcType="DECIMAL" property="total_price" />
+    <result column="discount" jdbcType="DECIMAL" property="discount" />
+    <result column="tax" jdbcType="DECIMAL" property="tax" />
+    <result column="shipping_fee" jdbcType="DECIMAL" property="shipping_fee" />
+    <result column="returned" jdbcType="BOOLEAN" property="returned" />
+    <result column="return_reason" jdbcType="VARCHAR" property="return_reason" />
+    <result column="return_date" jdbcType="DATE" property="return_date" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    record_id, order_id, product_id, user_id, quantity, unit_price, total_price, discount, 
+    tax, shipping_fee, returned, return_reason, return_date
+  </sql>
+</mapper>

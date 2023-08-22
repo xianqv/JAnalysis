@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.audit.janalysis.mapper.DboOrderInfoMapper">
+  <resultMap id="BaseResultMap" type="com.audit.janalysis.entity.DboOrderInfo">
+    <!--@mbg.generated-->
+    <!--@Table JAnalysis.DBO_OrderInfo-->
+    <id column="order_id" jdbcType="INTEGER" property="order_id" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
+    <result column="order_date" jdbcType="DATE" property="order_date" />
+    <result column="total_amount" jdbcType="DECIMAL" property="total_amount" />
+    <result column="shipping_address" jdbcType="VARCHAR" property="shipping_address" />
+    <result column="shipping_city" jdbcType="VARCHAR" property="shipping_city" />
+    <result column="shipping_country" jdbcType="VARCHAR" property="shipping_country" />
+    <result column="shipping_postal_code" jdbcType="VARCHAR" property="shipping_postal_code" />
+    <result column="payment_method" jdbcType="VARCHAR" property="payment_method" />
+    <result column="transaction_id" jdbcType="VARCHAR" property="transaction_id" />
+    <result column="is_paid" jdbcType="BOOLEAN" property="is_paid" />
+    <result column="is_shipped" jdbcType="BOOLEAN" property="is_shipped" />
+    <result column="shipping_date" jdbcType="DATE" property="shipping_date" />
+    <result column="delivery_date" jdbcType="DATE" property="delivery_date" />
+    <result column="special_instructions" jdbcType="VARCHAR" property="special_instructions" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    order_id, user_id, order_date, total_amount, shipping_address, shipping_city, shipping_country, 
+    shipping_postal_code, payment_method, transaction_id, is_paid, is_shipped, shipping_date, 
+    delivery_date, special_instructions
+  </sql>
+</mapper>

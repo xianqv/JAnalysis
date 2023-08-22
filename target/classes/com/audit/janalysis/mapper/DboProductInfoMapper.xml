@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.audit.janalysis.mapper.DboProductInfoMapper">
+  <resultMap id="BaseResultMap" type="com.audit.janalysis.entity.DboProductInfo">
+    <!--@mbg.generated-->
+    <!--@Table JAnalysis.DBO_ProductInfo-->
+    <id column="product_id" jdbcType="INTEGER" property="product_id" />
+    <result column="product_name" jdbcType="VARCHAR" property="product_name" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="brand" jdbcType="VARCHAR" property="brand" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="stock_quantity" jdbcType="INTEGER" property="stock_quantity" />
+    <result column="image_url" jdbcType="VARCHAR" property="image_url" />
+    <result column="manufacturing_date" jdbcType="DATE" property="manufacturing_date" />
+    <result column="expiry_date" jdbcType="DATE" property="expiry_date" />
+    <result column="weight" jdbcType="DECIMAL" property="weight" />
+    <result column="length" jdbcType="DECIMAL" property="length" />
+    <result column="width" jdbcType="DECIMAL" property="width" />
+    <result column="height" jdbcType="DECIMAL" property="height" />
+    <result column="is_discontinued" jdbcType="BOOLEAN" property="is_discontinued" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    product_id, product_name, category, brand, price, description, stock_quantity, image_url, 
+    manufacturing_date, expiry_date, weight, `length`, width, height, is_discontinued
+  </sql>
+</mapper>
