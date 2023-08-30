@@ -2,11 +2,16 @@ package com.audit.janalysis.controller;
 
 import com.audit.janalysis.entity.OBO_User;
 import com.audit.janalysis.service.OBO_UserService;
+import com.audit.janalysis.util.DataSecUtil;
+import com.audit.janalysis.util.GenerateUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.crypto.spec.SecretKeySpec;
 import java.util.List;
 
 @RestController
@@ -15,21 +20,31 @@ public class OBO_UserController {
 
     @Autowired
     OBO_UserService obo_userService;
+    @Autowired
+    DataSecUtil dataSecUtil;
 
     @GetMapping (value =  "/getUserInfos")
-    public List getUserInfos() {
-
-        LOGGER.info("获取用户信息");
+    public ResponseEntity<List> getUserInfos() throws Exception {
         List<OBO_User> userList=obo_userService.findAll();
-        LOGGER.info("获取用户信息成功"+userList.size()+"个用户:"+userList);
-        return userList;
+        for (OBO_User user : userList) {
+            // 获取每个用户对象的属性并进行处理
+            String password = user.getPassword();
+            GenerateUtil generateUtil =new GenerateUtil();
+            SecretKeySpec key = (SecretKeySpec) generateUtil.readKey();
+            String password2=dataSecUtil.aesDecrypt(password,key);
+            user.setPassword(password2);
+        }
+        return new ResponseEntity<>(userList, HttpStatus.OK);
     }
 
 
-    @PostMapping(value = "/getUserInfo")
-    public OBO_User getUserInfo(@RequestParam("userId") String userId) {
+    @GetMapping(value = "/getUserInfo/{userId}")
+    public OBO_User getUserInfo(@PathVariable("userId") String userId) throws Exception {
         LOGGER.info("获取用户信息");
         OBO_User user = obo_userService.getUser(userId);
+        GenerateUtil generateUtil =new GenerateUtil();
+        SecretKeySpec key = (SecretKeySpec) generateUtil.readKey();
+        user.setPassword(dataSecUtil.aesDecrypt(user.getPassword(),key));
         LOGGER.info("获取用户信息成功" + user);
         return user;
     }
@@ -50,10 +65,12 @@ public class OBO_UserController {
     }
 
     @PostMapping(value="/addUser")
-    public void addUser(@RequestBody OBO_User user) {
-        LOGGER.info("添加用户信息");
+    public void addUser(@RequestBody OBO_User user) throws Exception {
+        GenerateUtil generateUtil =new GenerateUtil();
+        SecretKeySpec key = (SecretKeySpec) generateUtil.readKey();
+        user.setPassword(dataSecUtil.aesEncrypt(user.getPassword(),key));
         int flag = obo_userService.insertUser(user);
-        LOGGER.info("添加用户信息成功" + flag);
+        LOGGER.info("用户注册成功" + flag);
     }
 
 

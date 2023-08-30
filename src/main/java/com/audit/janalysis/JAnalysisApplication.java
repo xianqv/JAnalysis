@@ -1,22 +1,27 @@
 package com.audit.janalysis;
 
+import com.audit.janalysis.util.DataSecUtil;
+import com.audit.janalysis.util.GenerateUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.system.JavaVersion;
 
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 @SpringBootApplication
 public class JAnalysisApplication {
 
 
     private  static  final Logger LOGGER= LogManager.getLogger(JAnalysisApplication.class);
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         SpringApplication.run(JAnalysisApplication.class, args);
         LOGGER.debug("debug message {}","log4j2debugmessage");
         LOGGER.info("info message {}","log4j2infomessage");
@@ -24,7 +29,18 @@ public class JAnalysisApplication {
         LOGGER.error("error message {}","log4j2errormessage");
         LOGGER.info("javaversion: {}", JavaVersion.getJavaVersion());
 
+        DataSecUtil dataSecUtil=new DataSecUtil();
+        GenerateUtil generateUtil =new GenerateUtil();
 
+
+        SecretKey key =generateUtil.readKey();
+        String content="hello world";
+
+        //加密
+        String text=dataSecUtil.aesEncrypt(content, (SecretKeySpec) key);
+        LOGGER.info("加密后内容：{}",text);
+        String text2=dataSecUtil.aesDecrypt(text, (SecretKeySpec) key);
+        LOGGER.info("解密后内容：{}",text2);
 
         File src = new File("./src_file");
         File dest = new File("./src_file2");
