@@ -6,5 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface OBO_UserMapper extends BaseMapper<OBO_User> {
+    OBO_User selectOne(String username);
 
 }

@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -39,4 +40,7 @@ public class OBO_UserService {
     }
 
 
+    public OBO_User getUserByName(String userName) {
+        return userMapper.selectOne(userName);
+    }
 }

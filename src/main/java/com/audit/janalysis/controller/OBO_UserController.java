@@ -74,4 +74,25 @@ public class OBO_UserController {
     }
 
 
+    //
+    @PostMapping(value="/userLogin")
+    public OBO_User userLogin(@RequestParam("userName") String userName ,@RequestParam("password") String password) throws Exception {
+        LOGGER.info("用户登录");
+        OBO_User user = obo_userService.getUserByName(userName);
+        if(user==null){
+            LOGGER.info("用户不存在");
+            return null;
+        }
+        //密码解密
+        GenerateUtil generateUtil =new GenerateUtil();
+        SecretKeySpec key = (SecretKeySpec) generateUtil.readKey();
+        String userPassword = dataSecUtil.aesDecrypt(user.getPassword(),key);
+        if(!userPassword.equals(password)){
+            LOGGER.info("密码错误");
+            return null;
+        }
+        LOGGER.info("用户登录成功" + user);
+        return user;
+    }
+
 }
