@@ -1,13 +1,16 @@
 package com.audit.janalysis.controller;
 
 import com.audit.janalysis.entity.OBO_User;
+import com.audit.janalysis.entity.OboToken;
 import com.audit.janalysis.service.OBO_UserService;
 import com.audit.janalysis.util.DataSecUtil;
 import com.audit.janalysis.util.GenerateUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +25,8 @@ public class OBO_UserController {
     OBO_UserService obo_userService;
     @Autowired
     DataSecUtil dataSecUtil;
+    @Autowired
+    OBO_TokenController oboTokenController;
 
     @GetMapping (value =  "/getUserInfos")
     public ResponseEntity<List> getUserInfos() throws Exception {
@@ -58,7 +63,10 @@ public class OBO_UserController {
 
 
     @PostMapping(value="/updateUser")
-    public void updateUser(@RequestBody OBO_User user) {
+    public void updateUser(@RequestBody OBO_User user) throws Exception {
+        GenerateUtil generateUtil =new GenerateUtil();
+        SecretKeySpec key = (SecretKeySpec) generateUtil.readKey();
+        user.setPassword(dataSecUtil.aesEncrypt(user.getPassword(),key));
         LOGGER.info("更新用户信息");
         int flag = obo_userService.updateUser(user);
         LOGGER.info("更新用户信息成功" + flag);
@@ -73,10 +81,8 @@ public class OBO_UserController {
         LOGGER.info("用户注册成功" + flag);
     }
 
-
-    //
     @PostMapping(value="/userLogin")
-    public OBO_User userLogin(@RequestParam("userName") String userName ,@RequestParam("password") String password) throws Exception {
+    public ResponseEntity<String> userLogin(@RequestParam("userName") String userName ,@RequestParam("password") String password) throws Exception {
         LOGGER.info("用户登录");
         OBO_User user = obo_userService.getUserByName(userName);
         if(user==null){
@@ -91,8 +97,17 @@ public class OBO_UserController {
             LOGGER.info("密码错误");
             return null;
         }
+        //token
+        OboToken oboToken=oboTokenController.createToken(String.valueOf(user.getId()));
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(oboToken.getToken_value());
+        headers.setCacheControl("no-cache, no-store, max-age=0, must-revalidate");
+        headers.setPragma("no-cache");
+        headers.setContentType(MediaType.APPLICATION_JSON);
         LOGGER.info("用户登录成功" + user);
-        return user;
+        // 返回令牌
+        return new ResponseEntity<>("create token success", headers,HttpStatus.OK);
     }
 
 }

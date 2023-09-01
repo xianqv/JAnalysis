@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.audit.janalysis.mapper.OboTokenMapper">
+  <resultMap id="BaseResultMap" type="com.audit.janalysis.entity.OboToken">
+    <!--@mbg.generated-->
+    <!--@Table JAnalysis.obo_token-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="token_value" jdbcType="VARCHAR" property="token_value" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="client_id" jdbcType="VARCHAR" property="client_id" />
+    <result column="delegation_user_id" jdbcType="BIGINT" property="delegation_user_id" />
+    <result column="expires_in" jdbcType="INTEGER" property="expires_in" />
+    <result column="created_at" jdbcType="BIGINT" property="created_at" />
+    <result column="updated_at" jdbcType="BIGINT" property="updated_at" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, token_value, user_id, client_id, delegation_user_id, expires_in, created_at, 
+    updated_at
+  </sql>
+</mapper>
