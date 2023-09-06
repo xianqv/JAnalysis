@@ -3,6 +3,7 @@ package com.audit.janalysis.controller;
 import com.audit.janalysis.entity.OBO_UserInfo;
 import com.audit.janalysis.service.OBO_UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

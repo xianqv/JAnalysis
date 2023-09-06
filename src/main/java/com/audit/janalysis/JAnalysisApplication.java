@@ -7,6 +7,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.system.JavaVersion;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -17,6 +19,8 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 @SpringBootApplication
+@RestController
+@EnableDiscoveryClient
 public class JAnalysisApplication {
 
 
