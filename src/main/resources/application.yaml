@@ -2,18 +2,6 @@ logging:
   config: classpath:log4j2-spring.xml
 
 spring:
-#  Spring cloud 配置
-  application:
-    name:  JAnalysis
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 172.16.158.13:8848
-        namespace: 718aa85b-0de1-4b09-b55e-d150c2240311
-
-
-
-
   #  datasource配置
   datasource:
     url: jdbc:mysql://localhost:3306/JAnalysis?useUnicode=true&characterEncoding=utf8&useSSL=false

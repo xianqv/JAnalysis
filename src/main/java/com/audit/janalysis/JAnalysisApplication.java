@@ -8,7 +8,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.system.JavaVersion;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -16,16 +15,15 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 
 @SpringBootApplication
-@RestController
 @EnableDiscoveryClient
 public class JAnalysisApplication {
 
-
     private  static  final Logger LOGGER= LogManager.getLogger(JAnalysisApplication.class);
     public static void main(String[] args) throws Exception {
+
+
         SpringApplication.run(JAnalysisApplication.class, args);
         LOGGER.debug("debug message {}","log4j2debugmessage");
         LOGGER.info("info message {}","log4j2infomessage");
@@ -86,4 +84,9 @@ public class JAnalysisApplication {
 
     }
 
+
+
+
+
 }
+

@@ -5,9 +5,12 @@ import java.util.Date;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.Version;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 @Data
+@Accessors(chain = true)
 @TableName("DBO_UserInfo")
 public class OBO_UserInfo {
     /**
@@ -85,6 +88,9 @@ public class OBO_UserInfo {
      *
      */
     private Integer loyaltyPoints;
+
+    @Version
+    private  Integer version;
 
 
 }

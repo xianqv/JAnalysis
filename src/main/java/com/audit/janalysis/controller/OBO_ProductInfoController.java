@@ -74,4 +74,10 @@ public class OBO_ProductInfoController {
         }
 
 
+        @GetMapping("/threads")
+        public void threadsUpdate(){
+            dboProductInfoService.updateProductInfo();
+        }
+
+
 }

@@ -1,9 +1,7 @@
 package com.audit.janalysis.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import lombok.AllArgsConstructor;
@@ -57,4 +55,7 @@ public class DboProductInfo {
 
     @TableField(value = "is_discontinued")
     private Boolean is_discontinued;
+    @Version
+    @TableField(value = "version")
+    private Integer version;
 }
