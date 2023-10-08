@@ -51,6 +51,7 @@ public class OBO_UserController {
         SecretKeySpec key = (SecretKeySpec) generateUtil.readKey();
         user.setPassword(dataSecUtil.aesDecrypt(user.getPassword(),key));
         LOGGER.info("获取用户信息成功" + user);
+        LOGGER.info("获取用户信息成功:"+"解密明文密码:"+dataSecUtil.aesDecrypt(user.getPassword(),key));
         return user;
     }
 

@@ -1,10 +1,14 @@
 package com.audit.janalysis.controller;
 
 import com.audit.janalysis.entity.OBO_User;
+import com.audit.janalysis.util.DataSecUtil;
+import com.audit.janalysis.util.GenerateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.crypto.spec.SecretKeySpec;
 import java.util.*;
 
 @RestController
@@ -12,7 +16,8 @@ public class DataInitController {
 
     @Autowired
     OBO_UserController oboUserController;
-
+    @Autowired
+    DataSecUtil dataSecUtil;
     //插入10W条数据
 
     @PutMapping("/insertDat10W")
@@ -31,6 +36,17 @@ public class DataInitController {
         }
     }
 
+    @PutMapping("/flush_Obo_user_Password")
+    public void  flush_Obo_user_Password() throws Exception {
+        GenerateUtil generateUtil =new GenerateUtil();
+        SecretKeySpec key = (SecretKeySpec) generateUtil.readKey();
+        ResponseEntity<List> listResponseEntity = oboUserController.getUserInfos();
+        List<OBO_User> userList = listResponseEntity.getBody();
+        for (OBO_User user : userList) {
+            user.setPassword(dataSecUtil.aesEncrypt(user.getPassword(),key));
+            oboUserController.updateUser(user);
+        }
+    }
     private static int generateUniqueID(Random random, Set<Integer> idSet) {
             int id;
             do {
@@ -65,5 +81,8 @@ public class DataInitController {
 
         return sb.toString();
     }
+
+
+
 
 }

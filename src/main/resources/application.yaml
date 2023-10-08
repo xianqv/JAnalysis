@@ -4,7 +4,7 @@ logging:
 spring:
   #  datasource配置
   datasource:
-    url: jdbc:mysql://172.16.18.13:3306/JAnalysis?useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://172.16.158.13:3306/JAnalysis?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -14,9 +14,7 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
-mybatis:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
 
 #tomcat端口
 server:
